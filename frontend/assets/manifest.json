@@ -1,0 +1,22 @@
+{
+    "name": "Finanzas Personales VIP",
+    "short_name": "Finanzas",
+    "description": "Tu coach financiero y gestor de finanzas personales.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#12131C",
+    "theme_color": "#12131C",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/assets/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
