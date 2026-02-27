@@ -34,15 +34,30 @@ Dado que no usaremos la terminal ni GitHub Desktop, vamos a subir los archivos m
 
 ## 3. Conectar tu App Local a Supabase
 
-1. En tu proyecto de Supabase, ve a **Project Settings** (el engrane en la parte inferior del menú izquierdo).
-2. Selecciona **API** en el sub-menú.
-3. Copia el valor de la **Project URL**.
-4. Copia el valor de la clave en **Project API keys** sub-sección `anon` / `public`.
-5. En la carpeta de tu proyecto en la Mac, busca el archivo `.env.example`, **renómbralo a `.env`** (quítale el `.example`).
-6. Abre el archivo `.env` y pega tus valores:
-   ```env
-   SUPABASE_URL=pega_tu_url_aqui
-   SUPABASE_KEY=pega_tu_key_anonima_aqui
-   ```
+*(Paso completado. El archivo `.env` ya fue configurado en tu máquina local).*
 
-¡Con eso estarás listo al 100%! Dime cuando termines estos pasos para continuar con la programación de las APIs en Python (Fase 4).
+---
+
+## 4. Obtener tu Link Público Mundial (Usar sin la Mac encendida)
+
+Para que puedas abrir la app en tu teléfono (o cualquier parte) 24/7 sin depender de la computadora, vamos a subir tu código a **Render**, un servidor gratuito para Python:
+
+1. Ve a **[Render.com](https://render.com/)** y crea una cuenta gratis usando tu perfil de GitHub.
+2. Una vez dentro de Render, haz clic en el botón de **"New"** (Nuevo) y selecciona **"Web Service"** (Servicio Web).
+3. Selecciona **"Build and deploy from a Git repository"**.
+4. Te pedirá conectar tu GitHub. Dale permiso y selecciona el repositorio `finanzas-personales-app`.
+5. En la configuración del servicio:
+   * **Name:** finanzas-vip
+   * **Region:** (Cualquiera cercana a ti, ej. US East)
+   * **Instance Type:** Free (Gratis)
+   * *Nota: Render detectará automáticamente el archivo `render.yaml` que acabo de crear para ti, así que no necesitas configurar los comandos de Python manualmente.*
+6. Desplázate hacia abajo y haz clic en **"Advanced"**.
+7. Busca el botón **"Add Environment Variable"** (Agregar variable de entorno), y agrega DOS variables exactamente iguales a las que pusimos en tu `.env` (sin las comillas):
+   - Key: `SUPABASE_URL` | Value: `(Pega aquí tu enlace de supabase que empieza con https://)`
+   - Key: `SUPABASE_KEY` | Value: `(Pega aquí el código larguísimo de Supabase)`
+   *(Nota: También puedes agregar la de Gemini de una vez: Key: `GEMINI_API_KEY` | Value: `tu-llave-gemini`)*
+8. Finalmente, dale clic al botón azul **"Create Web Service"**.
+
+Render empezará a construir tu computadora virtual en la nube. Toma unos 3 a 5 minutos. Cuando termine y diga **"Live"** en verde, verás un link arriba a la izquierda que será algo como: `https://finanzas-vip.onrender.com`.
+
+**¡LISTO!** Abre ese enlace en Safari en tu iPhone. Dale al icono de compartir y selecciona **"Agregar a inicio"**. Tendrás el ícono de tu app financiera en el celular y funcionará para siempre.
