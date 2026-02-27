@@ -2,7 +2,13 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 import os
+
+from routers import ingresos, gastos_fijos, prestamos, tarjetas, gastos_personales, coach
 
 app = FastAPI(title="Finanzas Personales API")
 
@@ -35,6 +41,14 @@ async def serve_sw():
 @app.get("/api/health")
 async def health_check():
     return {"status": "ok", "app": "Finanzas Personales API"}
+
+# Include routers
+app.include_router(ingresos.router)
+app.include_router(gastos_fijos.router)
+app.include_router(prestamos.router)
+app.include_router(tarjetas.router)
+app.include_router(gastos_personales.router)
+app.include_router(coach.router)
 
 if __name__ == "__main__":
     import uvicorn
